@@ -146,6 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const calculateBtn = document.getElementById('calculate-btn');
   const resultSection = document.getElementById('result-section');
   const recalculateBtn = document.getElementById('recalculate-btn');
+  const toggleDetailsBtn = document.getElementById('toggle-details-btn');
+  const detailsTableWrapper = document.getElementById('details-table-wrapper');
 
   branchSelect.addEventListener('change', (e) => {
     const branch = e.target.value;
@@ -326,6 +328,11 @@ document.addEventListener('DOMContentLoaded', () => {
       tbody.appendChild(tr);
     });
 
+    // Reset detailed results toggle
+    detailsTableWrapper.classList.remove('show');
+    toggleDetailsBtn.classList.remove('active');
+    toggleDetailsBtn.querySelector('span').textContent = 'Show Subject Breakdown';
+
     calculatorSection.classList.add('hidden');
     resultSection.classList.remove('hidden');
 
@@ -333,7 +340,25 @@ document.addEventListener('DOMContentLoaded', () => {
     resultSection.scrollIntoView({ behavior: 'smooth' });
   }
 
+  // Toggle Subject Breakdown
+  toggleDetailsBtn.addEventListener('click', () => {
+    const isShown = detailsTableWrapper.classList.toggle('show');
+    toggleDetailsBtn.classList.toggle('active');
+    
+    const btnText = toggleDetailsBtn.querySelector('span');
+    if (isShown) {
+      btnText.textContent = 'Hide Subject Breakdown';
+    } else {
+      btnText.textContent = 'Show Subject Breakdown';
+    }
+  });
+
   recalculateBtn.addEventListener('click', () => {
+    // Reset toggle state
+    detailsTableWrapper.classList.remove('show');
+    toggleDetailsBtn.classList.remove('active');
+    toggleDetailsBtn.querySelector('span').textContent = 'Show Subject Breakdown';
+
     resultSection.classList.add('hidden');
     calculatorSection.classList.remove('hidden');
     window.scrollTo({ top: 0, behavior: 'smooth' });
