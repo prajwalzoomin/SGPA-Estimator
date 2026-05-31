@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGPA Calculator - 4th Semester</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="welcome-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Welcome</h2>
+            <p>Know your approximate SGPA for the 4th semester based on your expected internal and external marks.
+                Please note this is an estimation.</p>
+            <button id="start-btn">Get Started</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="warning-banner">
+            <span class="warning-icon">!</span>
+            <p>Disclaimer: Estimated assumption, may differ from final result. (Semester end exams are not yet finished,
+                please enter expected marks for SEE).</p>
+        </div>
+
+        <header>
+            <h1>4th Semester SGPA Calculator</h1>
+            <p class="subtitle">Select your branch and enter your marks to predict your SGPA.</p>
+        </header>
+
+        <div class="card selection-card">
+            <label for="branch-select">Select Branch</label>
+            <select id="branch-select">
+                <option value="" disabled selected>Choose your branch...</option>
+                <option value="CSE">CSE</option>
+                <option value="CSE (DATA SCIENCE)">CSE (DATA SCIENCE)</option>
+                <option value="AIML">AIML</option>
+                <option value="ECE">ECE</option>
+                <option value="EEE">EEE</option>
+                <option value="MECHANICAL">MECHANICAL</option>
+            </select>
+        </div>
+
+        <div id="calculator-section" class="hidden">
+            <div id="theory-courses-container">
+                <!-- Theory courses injected dynamically -->
+            </div>
+
+            <div id="one-credit-course" class="card one-credit-course-card">
+                <h3>1 Credit Courses</h3>
+                <p class="section-desc">Select your expected grade for the 1 credit courses.</p>
+                <div id="labs-list">
+                    <!-- Lab courses injected dynamically -->
+                </div>
+            </div>
+
+            <div class="action-container">
+                <button id="calculate-btn">Calculate SGPA</button>
+            </div>
+        </div>
+
+        <div id="result-section" class="hidden card result-card">
+            <h2>Your Estimated SGPA</h2>
+            <div class="sgpa-display" id="sgpa-value">0.00</div>
+
+            <div class="detailed-results">
+                <h3>Subject Breakdown</h3>
+                <div class="table-responsive">
+                    <table id="results-table">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Type</th>
+                                <th>Credits</th>
+                                <th>Final Marks</th>
+                                <th>Grade</th>
+                                <th>Points</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results-body">
+                            <!-- Results injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <button id="recalculate-btn" class="secondary-btn">Recalculate</button>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p>Brought to you by</p>
+                <a href="https://twitter.com/prajwalzoomin" target="_blank" class="twitter-handle">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="x-icon">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.95H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.961h-1.96z">
+                        </path>
+                    </svg>
+                    @prajwalzoomin
+                </a>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

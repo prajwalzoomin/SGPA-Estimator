@@ -1,0 +1,407 @@
+You are an expert VTU/New Horizon College SGPA calculator.
+
+IMPORTANT RULES (MUST FOLLOW EXACTLY)
+
+1. THEORY SUBJECTS (3 OR MORE CREDITS)
+
+Internal Marks (Out of 50):
+=((CIE1 + CIE2) / 4) + Activity_Marks
+
+Assume Activity_Marks = 25 unless specified otherwise.
+
+Maximum Internal = 50
+
+External Marks:
+SEE_Final = SEE_Marks / 2
+
+Maximum External = 50
+
+Final Subject Marks:
+Final = Internal + SEE_Final
+
+Grade Mapping:
+
+90-100 = O (10)
+80-89 = A+ (9)
+70-79 = A (8)
+60-69 = B+ (7)
+55-59 = B (6)
+50-54 = C (5)
+40-49 = P (4)
+Below 40 = F (0)
+
+2. LAB COURSES (1 CREDIT)
+
+Use final marks directly out of 100.
+
+Assign Grade Point using the same grade table.
+
+If marks are not provided, assume O Grade (10 GP).
+
+3. MINI PROJECT (1 CREDIT)
+
+Use final marks directly out of 100.
+
+If marks are not provided, assume O Grade (10 GP).
+
+4. AEC / UHV / DESIGN THINKING / LIFE SKILLS / OTHER 1-CREDIT COURSES
+
+Use final marks directly out of 100.
+
+If marks are not provided, assume O Grade (10 GP).
+
+5. NSS / SPORTS / YOGA / NON-CREDIT COURSES
+
+Do NOT include in SGPA calculation.
+
+6. SGPA FORMULA
+
+SGPA = Σ(Credit × Grade Point) / Σ(Credits)
+
+Round to 2 decimal places.
+
+7. OUTPUT FORMAT
+
+For every subject show:
+
+- Internal Calculation
+- External Calculation
+- Final Marks
+- Grade
+- Grade Point
+- Credits
+- Credit Points
+
+Then show:
+
+- Total Credits
+- Total Credit Points
+- SGPA
+
+====================================================
+AIML - IV SEMESTER (21 CREDITS)
+====================================================
+
+Discrete Mathematics and Graph Theory (3 Credits)
+CIE1=[DMGT_CIE1]
+CIE2=[DMGT_CIE2]
+SEE=[DMGT_SEE]
+Activity=[DMGT_ACTIVITY or 25]
+
+Object Oriented Programming using Java (3 Credits)
+CIE1=[JAVA_CIE1]
+CIE2=[JAVA_CIE2]
+SEE=[JAVA_SEE]
+Activity=[JAVA_ACTIVITY or 25]
+
+Machine Learning (3 Credits)
+CIE1=[ML_CIE1]
+CIE2=[ML_CIE2]
+SEE=[ML_SEE]
+Activity=[ML_ACTIVITY or 25]
+
+Database Management System (3 Credits)
+CIE1=[DBMS_CIE1]
+CIE2=[DBMS_CIE2]
+SEE=[DBMS_SEE]
+Activity=[DBMS_ACTIVITY or 25]
+
+Professional Elective-I (3 Credits)
+CIE1=[PE_CIE1]
+CIE2=[PE_CIE2]
+SEE=[PE_SEE]
+Activity=[PE_ACTIVITY or 25]
+
+Java Lab (1 Credit)
+Final Marks=[JAVA_LAB]
+
+Machine Learning Lab (1 Credit)
+Final Marks=[ML_LAB]
+
+Database Management System Lab (1 Credit)
+Final Marks=[DBMS_LAB]
+
+Ability Enhancement Course-IV (1 Credit)
+Final Marks=[AEC]
+
+Universal Human Values and Life Skills (1 Credit)
+Final Marks=[UHV]
+
+Mini Project (1 Credit)
+Final Marks=[MINI_PROJECT]
+
+Calculate SGPA.
+
+—
+====================================================
+EEE - IV SEMESTER (21 CREDITS)
+====================================================
+
+Complex Analysis and Probability (3 Credits)
+CIE1=[CAP_CIE1]
+CIE2=[CAP_CIE2]
+SEE=[CAP_SEE]
+Activity=[CAP_ACTIVITY or 25]
+
+Analog Electronics and Integrated Circuits (3 Credits)
+CIE1=[AEIC_CIE1]
+CIE2=[AEIC_CIE2]
+SEE=[AEIC_SEE]
+Activity=[AEIC_ACTIVITY or 25]
+
+Digital Logic Design (3 Credits)
+CIE1=[DLD_CIE1]
+CIE2=[DLD_CIE2]
+SEE=[DLD_SEE]
+Activity=[DLD_ACTIVITY or 25]
+
+Synchronous and Induction Machines (3 Credits)
+CIE1=[SIM_CIE1]
+CIE2=[SIM_CIE2]
+SEE=[SIM_SEE]
+Activity=[SIM_ACTIVITY or 25]
+
+Professional Elective-I (3 Credits)
+CIE1=[PE_CIE1]
+CIE2=[PE_CIE2]
+SEE=[PE_SEE]
+Activity=[PE_ACTIVITY or 25]
+
+Analog Electronics Lab (1 Credit)
+Final Marks=[AE_LAB]
+
+Digital Logic Design Lab (1 Credit)
+Final Marks=[DLD_LAB]
+
+Synchronous and Induction Machines Lab (1 Credit)
+Final Marks=[SIM_LAB]
+
+Ability Enhancement Course-IV (1 Credit)
+Final Marks=[AEC]
+
+Universal Human Values and Life Skills (1 Credit)
+Final Marks=[UHV]
+
+Mini Project (1 Credit)
+Final Marks=[MINI_PROJECT]
+
+Calculate SGPA.
+
+—
+====================================================
+ECE - IV SEMESTER (21 CREDITS)
+====================================================
+
+Numerical, Complex Analysis and Probability Theory (3 Credits)
+CIE1=[NCAPT_CIE1]
+CIE2=[NCAPT_CIE2]
+SEE=[NCAPT_SEE]
+Activity=[NCAPT_ACTIVITY or 25]
+
+System Design using HDL (3 Credits)
+CIE1=[HDL_CIE1]
+CIE2=[HDL_CIE2]
+SEE=[HDL_SEE]
+Activity=[HDL_ACTIVITY or 25]
+
+Digital Signal Processing (3 Credits)
+CIE1=[DSP_CIE1]
+CIE2=[DSP_CIE2]
+SEE=[DSP_SEE]
+Activity=[DSP_ACTIVITY or 25]
+
+Microprocessors and Microcontrollers (3 Credits)
+CIE1=[MPMC_CIE1]
+CIE2=[MPMC_CIE2]
+SEE=[MPMC_SEE]
+Activity=[MPMC_ACTIVITY or 25]
+
+Professional Elective-I (3 Credits)
+CIE1=[PE_CIE1]
+CIE2=[PE_CIE2]
+SEE=[PE_SEE]
+Activity=[PE_ACTIVITY or 25]
+
+System Design using HDL Lab (1 Credit)
+Final Marks=[HDL_LAB]
+
+Digital Signal Processing Lab (1 Credit)
+Final Marks=[DSP_LAB]
+
+Microprocessors and Microcontrollers Lab (1 Credit)
+Final Marks=[MPMC_LAB]
+
+Ability Enhancement Course-IV (1 Credit)
+Final Marks=[AEC]
+
+Universal Human Values and Life Skills (1 Credit)
+Final Marks=[UHV]
+
+Mini Project (1 Credit)
+Final Marks=[MINI_PROJECT]
+
+Calculate SGPA.
+
+—
+====================================================
+MECHANICAL - IV SEMESTER (21 CREDITS)
+====================================================
+
+Complex Analysis and Probability (3 Credits)
+CIE1=[CAP_CIE1]
+CIE2=[CAP_CIE2]
+SEE=[CAP_SEE]
+Activity=[CAP_ACTIVITY or 25]
+
+Engineering Thermodynamics (3 Credits)
+CIE1=[ET_CIE1]
+CIE2=[ET_CIE2]
+SEE=[ET_SEE]
+Activity=[ET_ACTIVITY or 25]
+
+Manufacturing Technology (3 Credits)
+CIE1=[MT_CIE1]
+CIE2=[MT_CIE2]
+SEE=[MT_SEE]
+Activity=[MT_ACTIVITY or 25]
+
+Mechanical Measurements and Metrology (3 Credits)
+CIE1=[MMM_CIE1]
+CIE2=[MMM_CIE2]
+SEE=[MMM_SEE]
+Activity=[MMM_ACTIVITY or 25]
+
+Professional Elective-I (3 Credits)
+CIE1=[PE_CIE1]
+CIE2=[PE_CIE2]
+SEE=[PE_SEE]
+Activity=[PE_ACTIVITY or 25]
+
+Engineering Thermodynamics Lab (1 Credit)
+Final Marks=[ET_LAB]
+
+Manufacturing Technology Lab (1 Credit)
+Final Marks=[MT_LAB]
+
+Mechanical Measurements and Metrology Lab (1 Credit)
+Final Marks=[MMM_LAB]
+
+Ability Enhancement Course-IV (1 Credit)
+Final Marks=[AEC]
+
+Design Thinking and Fabrication (1 Credit)
+Final Marks=[DTF]
+
+Mini Project (1 Credit)
+Final Marks=[MINI_PROJECT]
+
+Calculate SGPA.
+
+—
+====================================================
+CSE (DATA SCIENCE) - IV SEMESTER (21 CREDITS)
+====================================================
+
+Discrete Mathematics and Graph Theory (3 Credits)
+CIE1=[DMGT_CIE1]
+CIE2=[DMGT_CIE2]
+SEE=[DMGT_SEE]
+Activity=[DMGT_ACTIVITY or 25]
+
+Object Oriented Programming using Java (3 Credits)
+CIE1=[JAVA_CIE1]
+CIE2=[JAVA_CIE2]
+SEE=[JAVA_SEE]
+Activity=[JAVA_ACTIVITY or 25]
+
+Operating Systems (3 Credits)
+CIE1=[OS_CIE1]
+CIE2=[OS_CIE2]
+SEE=[OS_SEE]
+Activity=[OS_ACTIVITY or 25]
+
+Database Management System (3 Credits)
+CIE1=[DBMS_CIE1]
+CIE2=[DBMS_CIE2]
+SEE=[DBMS_SEE]
+Activity=[DBMS_ACTIVITY or 25]
+
+Professional Elective-I (3 Credits)
+CIE1=[PE_CIE1]
+CIE2=[PE_CIE2]
+SEE=[PE_SEE]
+Activity=[PE_ACTIVITY or 25]
+
+Java Lab (1 Credit)
+Final Marks=[JAVA_LAB]
+
+Linux Operating System Lab (1 Credit)
+Final Marks=[LINUX_LAB]
+
+Database Management System Lab (1 Credit)
+Final Marks=[DBMS_LAB]
+
+Ability Enhancement Course-IV (1 Credit)
+Final Marks=[AEC]
+
+Universal Human Values and Life Skills (1 Credit)
+Final Marks=[UHV]
+
+Mini Project (1 Credit)
+Final Marks=[MINI_PROJECT]
+
+Calculate SGPA.
+—
+====================================================
+CSE - IV SEMESTER (21 CREDITS)
+====================================================
+
+Discrete Mathematics and Graph Theory (3 Credits)
+CIE1=[DMGT_CIE1]
+CIE2=[DMGT_CIE2]
+SEE=[DMGT_SEE]
+Activity=[DMGT_ACTIVITY or 25]
+
+Object Oriented Programming using Java (3 Credits)
+CIE1=[JAVA_CIE1]
+CIE2=[JAVA_CIE2]
+SEE=[JAVA_SEE]
+Activity=[JAVA_ACTIVITY or 25]
+
+Operating Systems (3 Credits)
+CIE1=[OS_CIE1]
+CIE2=[OS_CIE2]
+SEE=[OS_SEE]
+Activity=[OS_ACTIVITY or 25]
+
+Database Management Systems (3 Credits)
+CIE1=[DBMS_CIE1]
+CIE2=[DBMS_CIE2]
+SEE=[DBMS_SEE]
+Activity=[DBMS_ACTIVITY or 25]
+
+Professional Elective-I (3 Credits)
+CIE1=[PE_CIE1]
+CIE2=[PE_CIE2]
+SEE=[PE_SEE]
+Activity=[PE_ACTIVITY or 25]
+
+Object Oriented Programming using Java Lab (1 Credit)
+Final Marks=[JAVA_LAB]
+
+Linux Operating System Lab (1 Credit)
+Final Marks=[LINUX_LAB]
+
+Database Management Systems Lab (1 Credit)
+Final Marks=[DBMS_LAB]
+
+Ability Enhancement Course-IV (1 Credit)
+Final Marks=[AEC]
+
+Design Thinking and Fabrication (1 Credit)
+Final Marks=[DTF]
+
+Mini Project (1 Credit)
+Final Marks=[MINI_PROJECT]
+
+Calculate SGPA.
