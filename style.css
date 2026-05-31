@@ -329,6 +329,11 @@ select {
     margin-top: 3rem;
 }
 
+.actions-row {
+    display: flex;
+    gap: 1rem;
+}
+
 /* Results */
 .result-card {
     text-align: center;
@@ -531,5 +536,10 @@ tr:last-child td {
     .creator-links a {
         width: 100%;
         padding: 0.6rem;
+    }
+
+    .actions-row {
+        flex-direction: column;
+        gap: 0.75rem;
     }
 }

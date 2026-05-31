@@ -126,17 +126,21 @@ function getGradeFromMarks(marks) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Show Modal
+  // Show Modal only if not dismissed before
   const modal = document.getElementById('welcome-modal');
   const startBtn = document.getElementById('start-btn');
+  const welcomeDismissed = localStorage.getItem('sgpa_welcome_dismissed') === 'true';
 
-  // Slight delay for aesthetic effect
-  setTimeout(() => {
-    modal.classList.add('active');
-  }, 300);
+  if (!welcomeDismissed) {
+    // Slight delay for aesthetic effect
+    setTimeout(() => {
+      modal.classList.add('active');
+    }, 300);
+  }
 
   startBtn.addEventListener('click', () => {
     modal.classList.remove('active');
+    localStorage.setItem('sgpa_welcome_dismissed', 'true');
   });
 
   const branchSelect = document.getElementById('branch-select');
@@ -144,10 +148,65 @@ document.addEventListener('DOMContentLoaded', () => {
   const theoryContainer = document.getElementById('theory-courses-container');
   const labsList = document.getElementById('labs-list');
   const calculateBtn = document.getElementById('calculate-btn');
+  const clearBtn = document.getElementById('clear-btn');
   const resultSection = document.getElementById('result-section');
   const recalculateBtn = document.getElementById('recalculate-btn');
   const toggleDetailsBtn = document.getElementById('toggle-details-btn');
   const detailsTableWrapper = document.getElementById('details-table-wrapper');
+
+  // Auto-save form inputs
+  function saveFormData() {
+    const branch = branchSelect.value;
+    if (!branch) return;
+
+    const data = JSON.parse(localStorage.getItem('sgpa_estimator_data')) || {};
+    data.branch = branch;
+    data.values = data.values || {};
+
+    // Collect theory inputs
+    const theoryInputs = theoryContainer.querySelectorAll('input');
+    theoryInputs.forEach(input => {
+      data.values[input.id] = input.value;
+    });
+
+    // Collect lab selects
+    const labSelects = labsList.querySelectorAll('select');
+    labSelects.forEach(select => {
+      data.values[select.id] = select.value;
+    });
+
+    localStorage.setItem('sgpa_estimator_data', JSON.stringify(data));
+  }
+
+  // Restore saved form inputs
+  function restoreSavedData() {
+    const savedDataStr = localStorage.getItem('sgpa_estimator_data');
+    if (!savedDataStr) return;
+
+    try {
+      const savedData = JSON.parse(savedDataStr);
+      if (savedData && savedData.branch && branches[savedData.branch]) {
+        branchSelect.value = savedData.branch;
+        renderForm(branches[savedData.branch]);
+        calculatorSection.classList.remove('hidden');
+
+        if (savedData.values) {
+          Object.keys(savedData.values).forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+              el.value = savedData.values[id];
+            }
+          });
+        }
+
+        if (savedData.resultsShown && savedData.sgpa && savedData.results) {
+          displayResults(savedData.sgpa, savedData.results, true);
+        }
+      }
+    } catch (err) {
+      console.error("Error restoring saved data:", err);
+    }
+  }
 
   branchSelect.addEventListener('change', (e) => {
     const branch = e.target.value;
@@ -155,7 +214,39 @@ document.addEventListener('DOMContentLoaded', () => {
       renderForm(branches[branch]);
       calculatorSection.classList.remove('hidden');
       resultSection.classList.add('hidden');
+
+      // Reset saved values and results since branch changed
+      const data = {
+        branch: branch,
+        values: {},
+        resultsShown: false
+      };
+      localStorage.setItem('sgpa_estimator_data', JSON.stringify(data));
     }
+  });
+
+  // Attach auto-save event listeners using event delegation
+  calculatorSection.addEventListener('input', (e) => {
+    if (e.target.tagName === 'INPUT') {
+      saveFormData();
+    }
+  });
+
+  calculatorSection.addEventListener('change', (e) => {
+    if (e.target.tagName === 'SELECT' || e.target.tagName === 'INPUT') {
+      saveFormData();
+    }
+  });
+
+  // Clear Saved Data handler
+  clearBtn.addEventListener('click', () => {
+    localStorage.removeItem('sgpa_estimator_data');
+    branchSelect.value = '';
+    calculatorSection.classList.add('hidden');
+    resultSection.classList.add('hidden');
+    theoryContainer.innerHTML = '';
+    labsList.innerHTML = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
   function renderForm(branchData) {
@@ -309,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
     displayResults(sgpa, results);
   });
 
-  function displayResults(sgpa, results) {
+  function displayResults(sgpa, results, isRestoring = false) {
     document.getElementById('sgpa-value').textContent = sgpa;
 
     const tbody = document.getElementById('results-body');
@@ -336,8 +427,17 @@ document.addEventListener('DOMContentLoaded', () => {
     calculatorSection.classList.add('hidden');
     resultSection.classList.remove('hidden');
 
-    // Scroll to results smoothly
-    resultSection.scrollIntoView({ behavior: 'smooth' });
+    if (!isRestoring) {
+      // Save results view state
+      const data = JSON.parse(localStorage.getItem('sgpa_estimator_data')) || {};
+      data.resultsShown = true;
+      data.sgpa = sgpa;
+      data.results = results;
+      localStorage.setItem('sgpa_estimator_data', JSON.stringify(data));
+
+      // Scroll to results smoothly
+      resultSection.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   // Toggle Subject Breakdown
@@ -361,6 +461,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     resultSection.classList.add('hidden');
     calculatorSection.classList.remove('hidden');
+
+    // Update saved state
+    const data = JSON.parse(localStorage.getItem('sgpa_estimator_data')) || {};
+    data.resultsShown = false;
+    localStorage.setItem('sgpa_estimator_data', JSON.stringify(data));
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+
+  // Restore state on load if exists
+  restoreSavedData();
 });
