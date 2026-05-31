@@ -422,7 +422,7 @@ footer {
     margin: 0;
 }
 
-.twitter-handle {
+.twitter-handle, .linkedin-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -439,12 +439,12 @@ footer {
     font-family: 'Poppins', sans-serif;
 }
 
-.twitter-handle:hover {
+.twitter-handle:hover, .linkedin-link:hover {
     box-shadow: var(--shadow-md);
     transform: translateY(-2px);
 }
 
-.x-icon {
+.x-icon, .linkedin-icon {
     width: 16px;
     height: 16px;
     fill: currentColor;

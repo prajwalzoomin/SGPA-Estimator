@@ -179,11 +179,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         <input type="number" id="${subject.id}-cie2" min="0" max="50" placeholder="0" required>
                     </div>
                     <div class="input-group">
-                        <label>Activity (Max 25)</label><br>
+                        <label>Activity (Max 25)</label>
                         <input type="number" id="${subject.id}-act" min="0" max="25" placeholder="25" value="25" required>
                     </div>
                     <div class="input-group">
-                        <label>SEE (Max 100)</label>
+                        <label>Expected SEE (Max 100)</label>
                         <input type="number" id="${subject.id}-see" min="0" max="100" placeholder="0" required>
                     </div>
                 </div>
